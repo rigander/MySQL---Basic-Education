@@ -31,14 +31,19 @@
         // кавычках название таблицы.
         // $mysql->query("DROP TABLE `example`");
 
-        //todo Теперь создадим таблицу. Таблица может называться как-угодно
+        //todo Создание Таблицы. Таблица может называться как-угодно
         // главное без специальных символов.
         $mysql->query("CREATE TABLE `users` (
-    id INT NOT NULL,
-    name VARCHAR(50) NOT NULL,
-    bio TEXT NOT NULL,
-    PRIMARY KEY(id)    
+            id INT NOT NULL,
+            name VARCHAR(50) NOT NULL,
+            bio TEXT NOT NULL,
+            PRIMARY KEY(id)    
 )");
+        //todo Добавление новой записи в таблицу.
+        // Важно помнить что синтаксис кавычек внутри SQL команд очень важен ``, '', "".
+        $mysql->query(
+                "INSERT INTO `users` (`name`, `bio`) 
+                       VALUES ('Clark', 'From Krypton')");
     }
 //todo Обязательно после исполнения SQL запроса необходимо закрыть соединение с БД иначе
 // сервер будет перегружен и сайт может лечь.
