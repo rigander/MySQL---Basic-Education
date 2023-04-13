@@ -29,7 +29,16 @@
         // echo 'Host info: '.$mysql->host_info;
         //todo DROP TABLE - удалить таблицу и далее в наклонных
         // кавычках название таблицы.
-        $mysql->query("DROP TABLE `example`");
+        // $mysql->query("DROP TABLE `example`");
+
+        //todo Теперь создадим таблицу. Таблица может называться как-угодно
+        // главное без специальных символов.
+        $mysql->query("CREATE TABLE `users` (
+    id INT NOT NULL,
+    name VARCHAR(50) NOT NULL,
+    bio TEXT NOT NULL,
+    PRIMARY KEY(id)    
+)");
     }
 //todo Обязательно после исполнения SQL запроса необходимо закрыть соединение с БД иначе
 // сервер будет перегружен и сайт может лечь.
