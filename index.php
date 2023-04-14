@@ -33,21 +33,26 @@
 
         //todo Создание Таблицы. Таблица может называться как-угодно
         // главное без специальных символов.
-        $mysql->query("CREATE TABLE `users` (
-            id INT NOT NULL,
-            name VARCHAR(50) NOT NULL,
-            bio TEXT NOT NULL,
-            PRIMARY KEY(id)    
-)");
-        //todo Добавление новой записи в таблицу.
-        // Важно помнить что синтаксис кавычек внутри SQL команд очень важен ``, '', "".
-        // Добавление записей в цикле.
-        for($i = 1; $i <= 5; $i++){
-            $name = "Bob #".$i;
-            $mysql->query(
-                "INSERT INTO `users` (`name`, `bio`) 
-                       VALUES ('$name', 'From Krypton')");
-        }
+//        $mysql->query("CREATE TABLE `users` (
+//            id INT NOT NULL,
+//            name VARCHAR(50) NOT NULL,
+//            bio TEXT NOT NULL,
+//            PRIMARY KEY(id)
+//)");
+//        //todo Добавление новой записи в таблицу.
+//        // Важно помнить что синтаксис кавычек внутри SQL команд очень важен ``, '', "".
+//        // Добавление записей в цикле.
+//        for($i = 1; $i <= 5; $i++){
+//            $name = "Bob #".$i;
+//            $mysql->query(
+//                "INSERT INTO `users` (`name`, `bio`)
+//                       VALUES ('$name', 'From Krypton')");
+//        }
+        //todo Редактирование данных.
+        // Добавление записей
+        //$mysql->query("UPDATE `users` SET `bio` = 'New Good Text' WHERE `name` = 'Bob #1'");
+        //todo Удаление записей
+        $mysql->query("DELETE FROM `users` WHERE `id` >= 6");
     }
 //todo Обязательно после исполнения SQL запроса необходимо закрыть соединение с БД иначе
 // сервер будет перегружен и сайт может лечь.
