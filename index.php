@@ -55,6 +55,7 @@
         //$mysql->query("DELETE FROM `users` WHERE `id` >= 6");
 
         //todo Команды по выборке данных из БД.
+        // Выборка всех полей и записей таблицы users.
         $result = $mysql->query("SELECT * FROM `users`");
 
         //todo Вывести данные выборки.
@@ -69,6 +70,27 @@
             echo "<hr>";
         }
         printResults($result);
+
+        //todo Выборка конкретных полей
+        $result2 = $mysql->query("SELECT `id`, `name` FROM `users`");
+        printResults($result2);
+
+        //todo Выборка конкретных полей с условиями.
+        $result3 = $mysql->query("SELECT `id`, `name` FROM `users` WHERE `id` > 2");
+        printResults($result3);
+
+        //todo Выборка конкретных полей с условиями и сортировкой ASC - по возрастанию.
+        $result4 = $mysql->query("SELECT `id`, `name` FROM `users` WHERE `id` > 2 ORDER BY `id` ASC");
+        printResults($result4);
+
+        //todo Выборка конкретных полей с условиями и сортировкой DESC - по убыванию.
+        $result5 = $mysql->query("SELECT `id`, `name` FROM `users` WHERE `id` > 2 ORDER BY `id` DESC");
+        printResults($result5);
+
+        //todo Выборка конкретных полей с условием LIMIT - позволяет вывести указанное число строк из таблицы.
+        // В данном случае будут выведены только первые три записи.
+        $result6 = $mysql->query("SELECT `id`, `name` FROM `users` LIMIT 3");
+        printResults($result6);
     }
 //todo Обязательно после исполнения SQL запроса необходимо закрыть соединение с БД иначе
 // сервер будет перегружен и сайт может лечь.
