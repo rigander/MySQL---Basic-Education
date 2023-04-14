@@ -52,7 +52,21 @@
         // Добавление записей
         //$mysql->query("UPDATE `users` SET `bio` = 'New Good Text' WHERE `name` = 'Bob #1'");
         //todo Удаление записей
-        $mysql->query("DELETE FROM `users` WHERE `id` >= 6");
+        //$mysql->query("DELETE FROM `users` WHERE `id` >= 6");
+
+        //todo Команды по выборке данных из БД.
+        // Они отличаются от других команд тем что возвращают результат.
+        $result = $mysql->query("SELECT * FROM `users`");
+        //print_r($result);
+        //echo "Nums: ".$result->num_rows;
+        if ($result->num_rows > 0){
+            //print_r($result->fetch_all());
+            while($row = $result->fetch_assoc()){
+                echo "Id: ".$row['id'].'. ';
+                echo "Name: ".$row['name'].'. ';
+                echo "Bio: ".$row['bio'].'<br>';
+            }
+        }
     }
 //todo Обязательно после исполнения SQL запроса необходимо закрыть соединение с БД иначе
 // сервер будет перегружен и сайт может лечь.
